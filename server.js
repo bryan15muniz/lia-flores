@@ -46,7 +46,7 @@ app.get('/localizacao', (req, res) => res.render('localizacao'));
 app.get('/login', (req, res) => res.render('login', { erro: null }));
 app.post('/login', (req, res) => {
     const { usuario, senha } = req.body;
-    if (usuario === 'admin' && senha === 'flores2026') {
+    if (usuario === 'Lia-flores@spa' && senha === 'Amandamel') {
         req.session.logado = true;
         res.redirect('/admin');
     } else {
