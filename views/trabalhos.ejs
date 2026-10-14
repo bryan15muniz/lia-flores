@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Trabalhos | Lia Flores</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo">
+            <img src="/img/logo.jpg" alt="Lia Flores" class="logotipo">
+            Lia Flores
+        </a>
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <nav class="nav-links">
+            <button class="fechar-menu" id="fecharMenu">✕</button>
+            <ul>
+                <ul>
+                    <li><a href="/">Início</a></li>
+                    <li><a href="/#sobre">Sobre Nós</a></li>
+                    <li><a href="/#servicos">Nossos Serviços</a></li>
+                    <li><a href="/trabalhos">Nossos Trabalhos</a></li>
+                    <li><a href="/presentes-especiais" class="ativo">Presentes Especiais</a></li>
+                    <li><a href="/horarios">Horários de Atendimento</a></li>
+                    <li><a href="/localizacao">Localização</a></li>
+                    <li><a href="/orcamento">Orçamento Online</a></li>
+                </ul>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="pagina">
+        <div class="conteudo">
+            <h2 class="titulo-secao">Nossos Trabalhos</h2>
+            <p style="text-align:center; margin-bottom:30px;">Confira alguns dos nossos Buquês Tradicionais e Coreanos
+                💐
+            </p>
+            <style>
+                .grid-trabalhos {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 8px;
+                    margin-top: 30px;
+                }
+
+                .grid-trabalhos img {
+                    width: 100%;
+                    height: auto;
+                    max-height: 320px;
+                    object-fit: contain;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                    transition: transform 0.3s ease;
+                }
+
+                .grid-trabalhos img:hover {
+                    transform: scale(1.02);
+                }
+
+                @media (max-width: 900px) {
+                    .grid-trabalhos {
+                        grid-template-columns: repeat(2, 1fr);
+                    }
+                }
+
+                @media (max-width: 500px) {
+                    .grid-trabalhos {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            </style>
+
+            <div class="grid-trabalhos">
+                <img src="/img/trabalho-1.jpg" alt="Arranjo 1">
+                <img src="/img/trabalho-2.jpg" alt="Arranjo 2">
+                <img src="/img/trabalho-3.jpg" alt="Arranjo 3">
+                <img src="/img/trabalho-4.jpg" alt="Arranjo 4">
+                <img src="/img/trabalho-5.jpg" alt="Arranjo 5">
+                <img src="/img/trabalho-6.jpg" alt="Arranjo 6">
+                <img src="/img/trabalho-7.jpg" alt="Arranjo 7">
+                <img src="/img/trabalho-8.jpg" alt="Arranjo 8">
+            </div>
+            </style>
+
+        </div>
+    </section>
+
+    <script src="/js/script.js"></script>
+</body>
+
+</html>

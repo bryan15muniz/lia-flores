@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento Online | Lia Flores</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo">
+            <img src="/img/logo.jpg" alt="Lia Flores" class="logotipo">
+            Lia Flores
+        </a>
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <nav class="nav-links">
+            <button class="fechar-menu" id="fecharMenu">✕</button>
+            <ul>
+                <ul>
+                    <li><a href="/">Início</a></li>
+                    <li><a href="/#sobre">Sobre Nós</a></li>
+                    <li><a href="/#servicos">Nossos Serviços</a></li>
+                    <li><a href="/trabalhos">Nossos Trabalhos</a></li>
+                    <li><a href="/presentes-especiais" class="ativo">Presentes Especiais</a></li>
+                    <li><a href="/horarios">Horários de Atendimento</a></li>
+                    <li><a href="/localizacao">Localização</a></li>
+                    <li><a href="/orcamento">Orçamento Online</a></li>
+                </ul>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="pagina">
+        <div class="container">
+            <h2 class="titulo-secao">Solicitar Orçamento</h2>
+
+            <form action="/orcamento" method="POST" onsubmit="enviarWhatsApp(event)">
+                <div class="form-grupo">
+                    <label for="nome">Seu nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="telefone">Seu WhatsApp / Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="ocasiao">Ocasião:</label>
+                    <select id="ocasiao" name="ocasiao">
+                        <option value="">Selecione uma ocasião...</option>
+                        <option value="Aniversário">🎂 Aniversário</option>
+                        <option value="Casamento">💍 Casamento</option>
+                        <option value="Namorados">💕 Dia dos Namorados</option>
+                        <option value="Mãe">💐 Dia das Mães</option>
+                        <option value="Pai">👔 Dia dos Pais</option>
+                        <option value="Agradecimento">🙏 Agradecimento</option>
+                        <option value="Desculpa">🥺 Pedido de Desculpa</option>
+                        <option value="Outro">📝 Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="estilo">Estilo do Buquê:</label>
+                    <select id="estilo" name="estilo">
+                        <option value="">Selecione o estilo...</option>
+                        <option value="Tradicional">💐 Buquê Tradicional</option>
+                        <option value="Coreano">🌸 Buquê Coreano</option>
+                    </select>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="tamanho">Tamanho do Buquê:</label>
+                    <select id="tamanho" name="tamanho">
+                        <option value="">Selecione o tamanho...</option>
+                        <option value="Pequeno">P — Pequeno 🤍</option>
+                        <option value="Médio">M — Médio 🤍</option>
+                        <option value="Grande">G — Grande 🤍</option>
+                    </select>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="entrega">Como prefere receber?</label>
+                    <select id="entrega" name="entrega" onchange="mostrarEndereco()">
+                        <option value="">Selecione uma opção...</option>
+                        <option value="Retirar na Loja">🏪 Retirar na Loja</option>
+                        <option value="Entregar em Casa">🚚 Entregar em Casa</option>
+                    </select>
+                </div>
+
+                <div class="form-grupo" id="campo-endereco" style="display: none;">
+                    <label for="endereco">Endereço completo:</label>
+                    <input type="text" id="endereco" name="endereco"
+                        placeholder="Rua, número, bairro, complemento, cidade">
+                </div>
+
+                <div class="form-grupo">
+                    <label for="presente">Quer incluir um presente também?</label>
+                    <select id="presente" name="presente">
+                        <option value="Não">Não, somente arranjo de flores</option>
+                        <option value="Cesta de Chocolate">🍫 Cesta de Chocolate</option>
+                        <option value="Cesta de Ursinho com Chocolate">🧸 Cesta de Ursinho com Chocolate</option>
+                        <option value="Cesta de Café">☕ Cesta de Café — Pronta Entrega</option>
+                        <option value="Caneca de Personagem">🎨 Caneca de Personagem</option>
+                        <option value="Ursinho de Diversos Tamanhos">🧸 Ursinho — Diversos Tamanhos</option>
+                        <option value="Almofada de Coração">💖 Almofada de Coração</option>
+                        <option value="Cesta com Coração e Chocolate">❤️ Cesta e Coração com Chocolate</option>
+                        <option value="Outro presente">📝 Outro presente</option>
+                    </select>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="detalhes">Detalhes do que você deseja:</label>
+                    <textarea id="detalhes" name="detalhes" rows="5"
+                        placeholder="Descreva o que você precisa..."></textarea>
+                </div>
+
+                <button type="submit">Enviar Pedido</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        function mostrarEndereco() {
+            const entrega = document.getElementById('entrega').value;
+            const campoEndereco = document.getElementById('campo-endereco');
+            if (entrega === 'Entregar em Casa') {
+                campoEndereco.style.display = 'block';
+            } else {
+                campoEndereco.style.display = 'none';
+            }
+        }
+
+        async function enviarWhatsApp(e) {
+            e.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
+            const ocasiao = document.getElementById('ocasiao').value || 'Não informado';
+            const estilo = document.getElementById('estilo').value || 'Não informado';
+            const tamanho = document.getElementById('tamanho').value || 'Não informado';
+            const entrega = document.getElementById('entrega').value || 'Não informado';
+            const endereco = document.getElementById('endereco').value || 'Não informado';
+            const presente = document.getElementById('presente').value || 'Não informado';
+            const detalhes = document.getElementById('detalhes').value || 'Não informado';
+
+            await fetch('/orcamento', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ nome, telefone, ocasiao, estilo, tamanho, entrega, endereco, presente, detalhes })
+            });
+
+            let mensagem = `📋 Pedido de Orçamento
+
+👤 Nome: ${nome}
+📱 Telefone: ${telefone}
+🎉 Ocasião: ${ocasiao}
+💐 Estilo: ${estilo}
+📏 Tamanho: ${tamanho}
+🚚 Entrega: ${entrega}`;
+
+            if (entrega === 'Entregar em Casa') {
+                mensagem += `\n🏠 Endereço: ${endereco}`;
+            }
+
+            mensagem += `
+
+🎁 Presente: ${presente}
+
+📝 Detalhes:
+${detalhes}`;
+
+            window.open(`https://wa.me/5522992044992?text=${encodeURIComponent(mensagem)}`, '_blank');
+        }
+    </script>
+
+    <script src="/js/script.js"></script>
+</body>
+
+</html>

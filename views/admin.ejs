@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle | Lia Flores</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <a href="/logout" class="voltar" style="left:auto; right:4%;">Sair</a>
+
+    <section class="pagina" style="background:#fff9fb;">
+        <div class="conteudo" style="max-width:700px; text-align:left;">
+            <h1 style="text-align:center;">📋 Painel de Orçamentos</h1>
+            <p style="text-align:center; margin-bottom:30px; color:#666;">Total: <%= Object.keys(porData).length %> dias
+                    | <%= orcamentos.length %> orçamentos recebidos</p>
+
+            <% for (const data in porData) { %>
+                <div class="admin-data">📅 <%= data %>
+                </div>
+                <% porData[data].forEach(o=> { %>
+                    <div class="admin-item <%= o.respondido ? 'respondido' : '' %>">
+                        <strong>
+                            <%= o.nome %>
+                        </strong> — <%= o.telefone %><br>
+                            <small>
+                                <%= o.estilo %> • <%= o.tamanho %>
+                            </small><br>
+                            <em>
+                                <%= o.descricao %>
+                            </em>
+                            <div class="admin-acoes">
+                                <% if (!o.respondido) { %>
+                                    <form action="/marcar/<%= o.id %>" method="POST" style="display:inline;">
+                                        <button class="btn-ok">✓ Respondido</button>
+                                    </form>
+                                    <% } %>
+                                        <form action="/excluir/<%= o.id %>" method="POST" style="display:inline;"
+                                            onsubmit="return confirm('Tem certeza que deseja excluir?')">
+                                            <button class="btn-excluir">🗑️ Excluir</button>
+                                        </form>
+                            </div>
+                    </div>
+                    <% }) %>
+                        <% } %>
+
+                            <% if (orcamentos.length===0) { %>
+                                <p style="text-align:center; color:#999; padding:30px;">Nenhum orçamento recebido ainda.
+                                </p>
+                                <% } %>
+        </div>
+    </section>
+
+</body>
+
+</html>

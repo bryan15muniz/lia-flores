@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Presentes | Lia Flores</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .presentes-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .presentes-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--rosa);
+            margin-bottom: 50px;
+        }
+
+        .grid-presentes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .presente-card {
+            background: rgba(74, 21, 43, 0.95);
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .presente-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .presente-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .presente-card h3 {
+            padding: 15px 15px 0;
+            font-size: 1.1rem;
+            color: var(--texto-branco);
+        }
+
+        .chocolates-section {
+            background: rgba(74, 21, 43, 0.9);
+            border-radius: 12px;
+            padding: 40px 30px;
+            margin-top: 40px;
+        }
+
+        .chocolates-section h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--rosa);
+            margin-bottom: 30px;
+        }
+
+        .chocolates-section p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .chocolates-lista {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .categoria h4 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--texto-branco);
+        }
+
+        .categoria ul {
+            list-style: none;
+        }
+
+        .categoria ul li {
+            padding: 6px 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo">
+            <img src="/img/logo.jpg" alt="Lia Flores" class="logotipo">
+            Lia Flores
+        </a>
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <nav class="nav-links">
+            <button class="fechar-menu" id="fecharMenu">✕</button>
+            <ul>
+                <ul>
+                    <li><a href="/">Início</a></li>
+                    <li><a href="/#sobre">Sobre Nós</a></li>
+                    <li><a href="/#servicos">Nossos Serviços</a></li>
+                    <li><a href="/trabalhos">Nossos Trabalhos</a></li>
+                    <li><a href="/presentes-especiais" class="ativo">Presentes Especiais</a></li>
+                    <li><a href="/horarios">Horários de Atendimento</a></li>
+                    <li><a href="/localizacao">Localização</a></li>
+                    <li><a href="/orcamento">Orçamento Online</a></li>
+                </ul>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="presentes-section">
+        <h2>🎁 Nossos Presentes Especiais</h2>
+
+        <div class="grid-presentes">
+            <div class="presente-card">
+                <img src="/img/presente-cesta-chocolate.jpg" alt="Cesta de Chocolate">
+                <h3>Cestas de Chocolate</h3>
+            </div>
+            <div class="presente-card">
+                <img src="/img/presente-ursinho-chocolate.jpg" alt="Cesta de Ursinho com Chocolate">
+                <h3>Cestas de Ursinho com Chocolate</h3>
+            </div>
+            <div class="presente-card">
+                <img src="/img/presente-cesta-cafe.jpg" alt="Cesta de Café">
+                <h3>Cestas de Café — Pronta Entrega</h3>
+            </div>
+            <div class="presente-card">
+                <img src="/img/presente-caneca-personagem.jpg" alt="Caneca de Personagem">
+                <h3>Canecas de Personagens</h3>
+            </div>
+            <div class="presente-card">
+                <img src="/img/presente-ursinho.jpg" alt="Ursinho de Pelúcia">
+                <h3>Ursinhos em Diversos Tamanhos</h3>
+            </div>
+            <div class="presente-card">
+                <img src="/img/presente-cesta-coracao-chocolate.jpg" alt="Coração com Chocolate">
+                <h3>Cestas de Corações com Chocolate</h3>
+            </div>
+        </div>
+
+        <div class="chocolates-section">
+            <h3>🍫 Chocolates que Trabalhamos</h3>
+            <p>Trabalhamos com as melhores marcas de chocolate do mercado, garantindo qualidade e sabor inesquecível em
+                cada presente.</p>
+            <div class="chocolates-lista">
+                <div class="categoria">
+                    <h4>Ferrero Rocher</h4>
+                    <ul>
+                        <li>🍫 Caixa com 3 unidades</li>
+                        <li>🍫 Caixa com 4 unidades</li>
+                        <li>🍫 Caixa com 8 unidades</li>
+                        <li>🍫 Caixa com 12 unidades</li>
+                    </ul>
+                </div>
+                <div class="categoria">
+                    <h4>KitKat</h4>
+                    <ul>
+                        <li>🍫 Barra tradicional</li>
+                        <li>🍫 Mini KitKat</li>
+                        <li>🍫 Caixa sortida</li>
+                    </ul>
+                </div>
+                <div class="categoria">
+                    <h4>Lacta</h4>
+                    <ul>
+                        <li>🍫 Caixa de bombons</li>
+                        <li>🍫 Barras variadas</li>
+                    </ul>
+                </div>
+                <div class="categoria">
+                    <h4>Garoto</h4>
+                    <ul>
+                        <li>🍫 Caixa de bombons</li>
+                        <li>🍫 Barras variadas</li>
+                    </ul>
+                </div>
+                <div class="categoria">
+                    <h4>Nestlé</h4>
+                    <ul>
+                        <li>🍫 Caixa de bombons</li>
+                        <li>🍫 Barras variadas</li>
+                    </ul>
+                </div>
+                <div class="categoria">
+                    <h4>Viermon</h4>
+                    <ul>
+                        <li>🍫 Caixa de bombons</li>
+                        <li>🍫 Barras variadas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const fecharMenu = document.getElementById('fecharMenu');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuBtn.addEventListener('click', function () {
+            navLinks.classList.add('aberto');
+        });
+
+        fecharMenu.addEventListener('click', function () {
+            navLinks.classList.remove('aberto');
+        });
+    </script>
+</body>
+
+</html>
