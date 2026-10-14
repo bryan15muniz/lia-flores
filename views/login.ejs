@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Lia Flores</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <section class="login secao">
+        <div class="container login-container">
+            <h1 class="titulo-secao">🔐 Acesso Restrito</h1>
+            <p class="subtitulo">Apenas para administração</p>
+
+            <% if (erro) { %>
+                <div class="mensagem-erro">
+                    <%= erro %>
+                </div>
+                <% } %>
+
+                    <form action="/login" method="POST" class="form-login">
+                        <div class="grupo-form">
+                            <label for="usuario">Usuário</label>
+                            <input type="text" id="usuario" name="usuario" required placeholder="Digite seu usuário">
+                        </div>
+
+                        <div class="grupo-form">
+                            <label for="senha">Senha</label>
+                            <input type="password" id="senha" name="senha" required placeholder="Digite sua senha">
+                        </div>
+
+                        <button type="submit" class="btn-principal">Entrar 🔑</button>
+                    </form>
+
+                    <p class="voltar"><a href="/">← Voltar para o site</a></p>
+        </div>
+    </section>
+</body>
+
+</html>

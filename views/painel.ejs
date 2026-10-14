@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle | Lia Flores</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .painel-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 280px;
+        }
+
+        .titulo-painel {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4a152b;
+            margin-bottom: 15px;
+        }
+
+        .sem-orcamentos {
+            font-size: 1.2rem;
+            color: #4a152b;
+            font-weight: 500;
+        }
+
+        .dia-grupo {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .dia-titulo {
+            background: #6b1a4e;
+            color: white;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .orcamento-item {
+            padding: 20px 25px;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+        }
+
+        .orcamento-item:last-child {
+            border-bottom: none;
+        }
+
+        .orcamento-nome {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #4a152b;
+            margin-bottom: 8px;
+        }
+
+        .orcamento-detalhes {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .orcamento-data {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 8px;
+        }
+
+        .btn-excluir {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn-excluir:hover {
+            background: #c82333;
+        }
+
+        .sair-btn {
+            background: #4a152b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .status-entrega {
+            color: #27ae60;
+            font-weight: 500;
+        }
+
+        .status-retirada {
+            color: #e67e22;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo">
+            <img src="/img/logo.jpg" alt="Lia Flores" class="logotipo">
+            Lia Flores
+        </a>
+        <a href="/logout" class="sair-btn">Sair</a>
+    </header>
+
+    <section class="painel-container">
+        <h1 class="titulo-painel">Painel de Orçamentos</h1>
+
+        <% if (orcamentos.length===0) { %>
+            <p class="sem-orcamentos">Nenhum orçamento recebido ainda.</p>
+            <% } else { %>
+                <% const porDia={}; orcamentos.forEach(o=> {
+                    const data = new Date(o.data_criado);
+                    const diaSemana = data.toLocaleDateString('pt-BR', { weekday: 'long' });
+                    const dataFormatada = data.toLocaleDateString('pt-BR');
+                    const chave = `${diaSemana}, ${dataFormatada}`;
+                    if (!porDia[chave]) porDia[chave] = [];
+                    porDia[chave].push(o);
+                    });
+
+                    for (const dia in porDia) {
+                    %>
+                    <div class="dia-grupo">
+                        <div class="dia-titulo">
+                            📅 <%= dia %> — <%= porDia[dia].length %> orçamento(s)
+                        </div>
+                        <% porDia[dia].forEach(o=> {
+                            const hora = new Date(o.data_criado).toLocaleTimeString('pt-BR', {hour: '2-digit',
+                            minute:'2-digit'});
+                            %>
+                            <div class="orcamento-item">
+                                <a href="/excluir-orcamento/<%= o.id %>" class="btn-excluir"
+                                    onclick="return confirm('Tem certeza que deseja excluir este orçamento?')">🗑️
+                                    Excluir</a>
+
+                                <div class="orcamento-nome">
+                                    <%= o.nome %>
+                                </div>
+                                <div class="orcamento-detalhes">
+                                    📱 WhatsApp: <%= o.telefone %><br>
+                                        🎉 Ocasião: <%= o.ocasiao || 'Não informado' %><br>
+                                            🎁 Presente: <%= o.presente || 'Não informado' %><br>
+                                                🚚 Entrega/Retirada: <% if (o.tipoEntrega==='entrega' ) { %>
+                                                    <span class="status-entrega">Entrega em domicílio</span>
+                                                    <% } else { %>
+                                                        <span class="status-retirada">Retirada na loja</span>
+                                                        <% } %><br>
+                                                            <% if (o.tipoEntrega==='entrega' ) { %>
+                                                                🏠 Endereço: <%= o.endereco || 'Não informado' %><br>
+                                                                    <% } %>
+                                                                        📝 Detalhes: <%= o.detalhes
+                                                                            || 'Nenhum detalhe adicional' %>
+                                </div>
+                                <div class="orcamento-data">🕐 Recebido às <%= hora %>
+                                </div>
+                            </div>
+                            <% }) %>
+                    </div>
+                    <% } %>
+                        <% } %>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento Online | Lia Flores</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo">
+            <img src="/img/logo.jpg" alt="Lia Flores" class="logotipo">
+            Lia Flores
+        </a>
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <nav class="nav-links">
+            <button class="fechar-menu" id="fecharMenu">✕</button>
+            <ul>
+                <ul>
+                    <li><a href="/">Início</a></li>
+                    <li><a href="/#sobre">Sobre Nós</a></li>
+                    <li><a href="/#servicos">Nossos Serviços</a></li>
+                    <li><a href="/trabalhos">Nossos Trabalhos</a></li>
+                    <li><a href="/presentes-especiais" class="ativo">Presentes Especiais</a></li>
+                    <li><a href="/horarios">Horários de Atendimento</a></li>
+                    <li><a href="/localizacao">Localização</a></li>
+                    <li><a href="/orcamento">Orçamento Online</a></li>
+                </ul>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="max-width: 500px; margin: 40px auto; padding: 20px;">
+        <h2 style="text-align: center; color: var(--rosa); margin-bottom: 30px;">Solicite seu Orçamento</h2>
+
+        <form action="/orcamento" method="POST"
+            style="background: var(--roxo-vinho); padding: 30px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Seu Nome *</label>
+            <input type="text" name="nome" required placeholder="Digite seu nome completo"
+                onkeypress="return onlyLetters(event)"
+                style="width: 100%; padding: 12px; margin-bottom: 20px; border: none; border-radius: 8px; font-size: 16px;">
+
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Seu WhatsApp *</label>
+            <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000" maxlength="15"
+                style="width: 100%; padding: 12px; margin-bottom: 20px; border: none; border-radius: 8px; font-size: 16px;">
+
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Ocasião</label>
+            <select name="ocasiao"
+                style="width: 100%; padding: 12px; margin-bottom: 20px; border: none; border-radius: 8px; font-size: 16px;">
+                <option value="">Selecione a ocasião</option>
+                <option value="Aniversário">Aniversário</option>
+                <option value="Dia das Mães">Dia das Mães</option>
+                <option value="Dia dos Namorados">Dia dos Namorados</option>
+                <option value="Casamento">Casamento</option>
+                <option value="Nascimento">Nascimento</option>
+                <option value="Corporativo">Corporativo</option>
+                <option value="Sem ocasião específica">Sem ocasião específica</option>
+                <option value="Outro">Outro</option>
+            </select>
+
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Deseja incluir um presente?</label>
+            <select name="presente"
+                style="width: 100%; padding: 12px; margin-bottom: 20px; border: none; border-radius: 8px; font-size: 16px;">
+                <option value="">Não desejo presente</option>
+                <option value="Cesta de chocolate">Cesta de chocolate</option>
+                <option value="Cesta de ursinho com chocolate">Cesta de ursinho com chocolate</option>
+                <option value="Cesta de café a pronta entrega">Cesta de café a pronta entrega</option>
+                <option value="Caneca de personagens">Canecas de personagens</option>
+                <option value="Ursinho">Ursinhos diversos tamanhos</option>
+                <option value="Almofada de coração">Almofadas de coração</option>
+                <option value="Cesta e corações com chocolate">Cestas e corações com chocolate</option>
+            </select>
+
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Tamanho do Buquê</label>
+            <select name="tamanhoBuque"
+                style="width: 100%; padding: 12px; margin-bottom: 20px; border: none; border-radius: 8px; font-size: 16px;">
+                <option value="">Selecione o tamanho</option>
+                <option value="P">P - Pequeno</option>
+                <option value="M">M - Médio</option>
+                <option value="G">G - Grande</option>
+            </select>
+
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Estilo do Buquê</label>
+            <select name="estiloBuque"
+                style="width: 100%; padding: 12px; margin-bottom: 20px; border: none; border-radius: 8px; font-size: 16px;">
+                <option value="">Selecione o estilo</option>
+                <option value="Tradicional">Buquê Tradicional</option>
+                <option value="Coreano">Buquê Coreano</option>
+            </select>
+
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Como prefere receber?</label>
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 10px; cursor: pointer;">
+                    <input type="radio" name="tipoEntrega" value="retirada" checked>
+                    Retirar na loja
+                </label>
+                <label style="display: block; cursor: pointer;">
+                    <input type="radio" name="tipoEntrega" value="entrega">
+                    Entregar em domicílio
+                </label>
+            </div>
+
+            <div id="campoEndereco" style="display: none; margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Endereço Completo</label>
+                <input type="text" name="endereco" placeholder="Rua, número, bairro..."
+                    style="width: 100%; padding: 12px; border: none; border-radius: 8px; font-size: 16px;">
+            </div>
+
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Detalhes do seu pedido</label>
+            <textarea name="detalhes" rows="4" placeholder="Descreva o que você deseja..."
+                style="width: 100%; padding: 12px; margin-bottom: 25px; border: none; border-radius: 8px; font-size: 16px;"></textarea>
+
+            <button type="submit"
+                style="width: 100%; padding: 14px; background: var(--rosa); color: white; border: none; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer;">Enviar
+                Orçamento ✨</button>
+        </form>
+    </main>
+
+
+    <script src="/js/script.js"></script>
+    <script>
+        const radiosEntrega = document.querySelectorAll('input[name="tipoEntrega"]');
+        const campoEndereco = document.getElementById('campoEndereco');
+        radiosEntrega.forEach(radio => {
+            radio.addEventListener('change', function () {
+                campoEndereco.style.display = this.value === 'entrega' ? 'block' : 'none';
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
